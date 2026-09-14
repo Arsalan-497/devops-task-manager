@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps Task Manager</title>
+</head>
+<body>
+
+    <h1>DevOps Task Manager</h1>
+
+    <a href="{% url 'task_create' %}">Add New Task</a>
+
+    <hr>
+
+    {% for task in tasks %}
+
+        <div>
+            <h3>
+                {% if task.completed %}
+                    ✅ {{ task.title }}
+                {% else %}
+                    ⬜ {{ task.title }}
+                {% endif %}
+            </h3>
+
+            <p>{{ task.description }}</p>
+
+            <small>Created: {{ task.created_at }}</small>
+
+            <br><br>
+
+            <a href="{% url 'task_toggle' task.id %}">
+                {% if task.completed %}
+                    Mark as Incomplete
+                {% else %}
+                    Mark as Complete
+                {% endif %}
+            </a>
+
+            |
+
+            <a href="{% url 'task_delete' task.id %}">
+                Delete
+            </a>
+        </div>
+
+        <hr>
+
+    {% empty %}
+
+        <p>No tasks available.</p>
+
+    {% endfor %}
+
+</body>
+</html>
