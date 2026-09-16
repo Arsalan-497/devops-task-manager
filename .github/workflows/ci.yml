@@ -77,8 +77,10 @@ jobs:
         run: |
           docker build \
             -t arsalkhan497/devops-task-manager:latest \
+            -t arsalkhan497/devops-task-manager:${{ github.sha }} \
             .
 
-      - name: Push Docker image
+      - name: Push Docker images
         run: |
           docker push arsalkhan497/devops-task-manager:latest
+          docker push arsalkhan497/devops-task-manager:${{ github.sha }}
