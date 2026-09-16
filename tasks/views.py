@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import TaskForm
@@ -37,3 +38,7 @@ def task_delete(request, task_id):
     task.delete()
 
     return redirect("task_list")
+
+
+def health_check(request):
+    return JsonResponse({"status": "ok"})

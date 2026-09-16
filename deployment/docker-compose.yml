@@ -1,7 +1,7 @@
 services:
 
   web:
-    build: .
+    image: arsalkhan497/devops-task-manager:latest
     container_name: devops-task-manager-app
     ports:
       - "8000:8000"
@@ -26,6 +26,7 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+    restart: unless-stopped
 
   db:
     image: postgres:16-alpine
@@ -41,6 +42,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
 volumes:
   postgres_data:
