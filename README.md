@@ -281,3 +281,4 @@ Possible future improvements include:
 * Monitoring and logging
 * Container security improvements
 * Cloud deployment
+< CI/CD pipeline verified -->
